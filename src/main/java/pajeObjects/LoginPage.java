@@ -12,7 +12,7 @@ public class LoginPage {
     private By loginButtonLocator = By.cssSelector("#login button");
     private By successLocator = By.cssSelector(".flash.success");
     private By errorLocator = By.cssSelector(".flash.error");
-
+// This
     public LoginPage(WebDriver webDriver){
        this.driver=webDriver;
        driver.get(baseUrl);
