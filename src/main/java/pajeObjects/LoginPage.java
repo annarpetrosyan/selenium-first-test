@@ -18,6 +18,10 @@ public class LoginPage {
        driver.get(baseUrl);
     }
 
+    public String getUrl(){
+        return driver.getCurrentUrl();
+    }
+
     public void login(String username, String password){
         driver.findElement(usernameLocator).sendKeys(username);
         driver.findElement(passwordLocator).sendKeys(password);
@@ -31,5 +35,10 @@ public class LoginPage {
     public boolean isErrorPresent(){
         return driver.findElement(errorLocator).isDisplayed();
 
+    }
+
+
+    public String getErrorMessage() {
+        return driver.findElement(errorLocator).getText();
     }
 }

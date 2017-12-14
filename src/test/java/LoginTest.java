@@ -26,6 +26,9 @@ public class LoginTest {
     public void login(){
        loginPage.login("tomsmith", "SuperSecretPassword!");
         assertTrue(loginPage.isSuccessPresent(), "Login was not Sucess");
+        assertTrue(loginPage.getUrl().contains("/sequre"));
+        assertTrue(loginPage.getErrorMessage().contains("Your username is invalid!"), "Assertion Error");
+
     }
 
 //    @Test
@@ -40,22 +43,6 @@ public class LoginTest {
 
 
 
-
-//    /*
-// Login and check success loginned state
-//  */
-//    @Test
-//    public void urlAssertion() throws  InterruptedException{
-//        final String expectedUrl = "https://the-internet.herokuapp.com/secure";
-//        final String baseUrl = "https://the-internet.herokuapp.com";
-//
-//        driver.findElement(By.id("username")).sendKeys("tomsmith");
-//        driver.findElement(By.id("password")).sendKeys("SuperSecretPassword!");
-//        driver.findElement(By.cssSelector("#login button")).click();
-//        assertEquals(driver.getCurrentUrl(),expectedUrl);
-//        assertEquals(driver.getCurrentUrl(), baseUrl+"/secure");
-//
-//    }
 
 
    @AfterMethod
