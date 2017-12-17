@@ -2,9 +2,8 @@ package pajeObjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
-public class LoginPage {
+public class LoginPage extends BasePage {
     private WebDriver driver;
     private String baseUrl = "https://the-internet.herokuapp.com/login";
     private By usernameLocator = By.id("username");
@@ -13,6 +12,7 @@ public class LoginPage {
     private By successLocator = By.cssSelector(".flash.success");
     private By errorLocator = By.cssSelector(".flash.error");
 // This
+
     public LoginPage(WebDriver webDriver){
        this.driver=webDriver;
        driver.get(baseUrl);
@@ -41,4 +41,49 @@ public class LoginPage {
     public String getErrorMessage() {
         return driver.findElement(errorLocator).getText();
     }
+    // Home task
+    // this is fill method
+    public void fill(String fieldName, String value) {
+        switch (fieldName) {
+            case "Username": {
+                driver.findElement(usernameLocator).sendKeys(value);
+                break;
+            }
+            case "Password": {
+                driver.findElement(passwordLocator).sendKeys(value);
+                break;
+            }
+            default: {
+                System.out.println("There is no" + fieldName + " field!");
+            }
+        }
+    }
+    /*
+        This is click function
+    */
+    public void clickOn(String buttonName){
+        switch(buttonName){
+            case "Login":{
+                driver.findElement(loginButtonLocator).click();
+                break;
+            }
+            default:{
+                System.out.println("There is no" + buttonName + " button!");
+            }
+        }
+    }
+//    public boolean isSuccessPresent(){
+//        return driver.findElement(successLocator).isDisplayed();
+//    }
+//
+//    public boolean isErrorPresent(){
+//        return driver.findElement(errorLocator).isDisplayed();
+//
+//    }
+/*
+Global function for isDisplayed
+ */
+
+
+
 }
